@@ -8,9 +8,29 @@
 
 // Get the form
 
+const formEl = document.querySelector("form");
+
 // Listen for submit event, prevent default, store the first+last name in sessionStorage
 
+
+if(formEl){
+    
+formEl.addEventListener("submit", function(e){
+    e.preventDefault();
+    const firstName = formEl.formFirstName.value;
+    
+    const lastName = formEl.formLastName.value;
+   
+    sessionStorage.setItem("username", `${firstName} ${lastName}`);
+    currentUserEl.textContent = sessionStorage.getItem("username");
+});
+}
+
 // Get the .currentUser and store the value of the sessionStorage in there
+
+const currentUserEl = document.querySelector(".currentUser");
+
+currentUserEl.textContent = sessionStorage.getItem("username");
 
 // Now try getting the sessionStorage from anotherfile.html
 
